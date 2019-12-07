@@ -49,7 +49,19 @@ const Catalog = {
                </div>`
 };
 
-const Profile = { template: '<div>profile</div>' };
+const Profile = {
+    data: function(){ return data; },
+    template:
+`<div>
+  <div>
+    <div>個人信息</div>
+  </div>
+  <hr/>
+  <div>
+    <div>我的標簽</div>
+  </div>
+</div>`
+};
 
 const Recommandation = {
     data: function(){ return data; },
