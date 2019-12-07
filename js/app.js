@@ -28,12 +28,19 @@ data.catalog = _.map(_.range(100),function(i){
     }
 });
 
-// 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
-// and then call `Vue.use(VueRouter)`.
+const Catalog = {
+    data: function(){ return data; },
+    template: `
+<div id="catalog-container">
+  <ol>
+    <li v-for="item in catalog">
+      <span>{{item.title}}</span>
+      <span>{{item.abstract}}</span>
+    </li>
+  </ol>
+</div>`
+};
 
-// 1. Define route components.
-// These can be imported from other files
-const Catalog = { template: '<div>catalog</div>' };
 const Profile = { template: '<div>profile</div>' };
 const Recommandation = { template: '<div>recommandation</div>' };
 
