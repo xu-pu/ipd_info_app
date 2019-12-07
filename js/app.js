@@ -3,7 +3,10 @@
 var data = {
     catalog: [],
     tags: [],
-    recommandations: []
+    recommandations: [],
+    profile: {
+        tags: []
+    }
 };
 
 data.tags = _.map(_.range(20),function(i){
@@ -23,6 +26,8 @@ data.catalog = _.map(_.range(100),function(i){
 });
 
 data.recommandations = _.sample(data.catalog,10);
+
+data.profile.tags = _.sample(data.tags,10);
 
 Vue.component('info-list',{
     props: ['items'],
@@ -59,6 +64,9 @@ const Profile = {
   <hr/>
   <div>
     <div>我的標簽</div>
+    <div id="profile-tag-container">
+      <div v-for="tag in profile.tags" class="profile-tag">{{tag.name}}</div>
+    </div>
   </div>
 </div>`
 };
