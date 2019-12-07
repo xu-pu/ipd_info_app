@@ -13,7 +13,8 @@ body { margin: 0; padding: 0; font-size: 3em; }
 }
 
 #nav-bar span {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Squada One', cursive;
+    /*font-family: 'Fredoka One', cursive;*/
     font-size: 2em;
     line-height: 1.5em;
 }
@@ -58,4 +59,28 @@ body { margin: 0; padding: 0; font-size: 3em; }
     width: 100%;
     top: 3em;
     bottom: 3em;
+    overflow: scroll;
+}
+
+#catalog-container {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em;
+}
+
+#catalog-container li {
+    background-color: antiquewhite;
+    margin-bottom: 0.5em;
+    padding: 1em;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    word-break: break-all;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.item-abstract {
+
 }

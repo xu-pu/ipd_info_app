@@ -13,29 +13,25 @@ data.tags = _.map(_.range(20),function(i){
     }
 });
 
-function random_tags(N){
-    return _.map(_.sample(data.tags,N),function(tag){
-        return tag.idx;
-    });
-}
-
 data.catalog = _.map(_.range(100),function(i){
     return {
         id: i,
-        title: faker.random.words(_.random(5,10)),
+        title: faker.random.words(_.random(5,8)),
         abstract: faker.random.words(_.random(20,30)),
-        tags: random_tags(_.random(2,6)),
+        tags: _.sample(data.tags,(_.random(2,6)))
     }
 });
+
+data.recommandations = _.sample(data.catalog,10);
 
 const Catalog = {
     data: function(){ return data; },
     template: `
-<div id="catalog-container">
-  <ol>
+<div>
+  <ol id="catalog-container">
     <li v-for="item in catalog">
-      <span>{{item.title}}</span>
-      <span>{{item.abstract}}</span>
+      <div class="item-title">{{item.title}}</div>
+      <div class="item-abstract">{{item.abstract}}</div>
     </li>
   </ol>
 </div>`
