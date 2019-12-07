@@ -16,8 +16,8 @@ data.tags = _.map(_.range(20),function(i){
 data.catalog = _.map(_.range(100),function(i){
     return {
         id: i,
-        title: faker.random.words(_.random(5,8)),
-        abstract: faker.random.words(_.random(20,30)),
+        title: faker.lorem.sentence(),
+        abstract: faker.lorem.paragraph(),
         tags: _.sample(data.tags,(_.random(2,6)))
     }
 });
@@ -31,6 +31,12 @@ const Catalog = {
   <ol id="catalog-container">
     <li v-for="item in catalog">
       <div class="item-title">{{item.title}}</div>
+      <hr/>
+      <div class="item-tags">
+        Tags:
+        <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
+      </div>
+      <hr/>
       <div class="item-abstract">{{item.abstract}}</div>
     </li>
   </ol>
