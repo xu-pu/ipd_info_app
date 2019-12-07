@@ -1,0 +1,4 @@
+body { margin: 0; padding: 0; font-size: 3em; }
+#nav-bar { background-color: red; position: absolute; width: 100%; top: 0; height: 3em; }
+#tab-bar { background-color: blue; position: absolute; width: 100%; bottom: 0; height: 3em; }
+#lvl1-outlet { background-color: purple; position: absolute; width: 100%; top: 3em; bottom: 3em; }
