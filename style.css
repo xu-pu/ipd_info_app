@@ -45,12 +45,24 @@ body { margin: 0; padding: 0; font-size: 3em; }
     background-image: url(images/icon-profile.png);
 }
 
+#tab-profile.router-link-active {
+    background-image: url(images/icon-profile-red.png);
+}
+
 #tab-catalog {
     background-image: url(images/icon-browse.png);
 }
 
+#tab-catalog.router-link-active {
+    background-image: url(images/icon-browse-red.png);
+}
+
 #tab-recommandation {
     background-image: url(images/icon-for-you.png);
+}
+
+#tab-recommandation.router-link-active {
+    background-image: url(images/icon-for-you-red.png);
 }
 
 #lvl1-outlet {
