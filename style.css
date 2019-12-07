@@ -1,4 +1,21 @@
 body { margin: 0; padding: 0; font-size: 3em; }
 #nav-bar { background-color: red; position: absolute; width: 100%; top: 0; height: 3em; }
-#tab-bar { background-color: blue; position: absolute; width: 100%; bottom: 0; height: 3em; }
+
+#tab-bar {
+    background-color: blue;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 3em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#tab-bar a {
+    background-color: yellow;
+    display: inline-block;
+    height: 100%;
+    width: 4em;
+}
+
 #lvl1-outlet { background-color: purple; position: absolute; width: 100%; top: 3em; bottom: 3em; }
