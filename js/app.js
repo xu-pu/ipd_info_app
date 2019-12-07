@@ -24,12 +24,11 @@ data.catalog = _.map(_.range(100),function(i){
 
 data.recommandations = _.sample(data.catalog,10);
 
-const Catalog = {
-    data: function(){ return data; },
+Vue.component('info-list',{
+    props: ['items'],
     template: `
-<div>
   <ol id="catalog-container">
-    <li v-for="item in catalog">
+    <li v-for="item in items">
       <div class="item-title">{{item.title}}</div>
       <hr/>
       <div class="item-tags">
@@ -40,11 +39,25 @@ const Catalog = {
       <div class="item-abstract">{{item.abstract}}</div>
     </li>
   </ol>
-</div>`
+    `
+});
+
+const Catalog = {
+    data: function(){ return data; },
+    template: `<div>
+                 <info-list v-bind:items="catalog"></info-list>
+               </div>`
 };
 
 const Profile = { template: '<div>profile</div>' };
-const Recommandation = { template: '<div>recommandation</div>' };
+
+const Recommandation = {
+    data: function(){ return data; },
+    template: `<div>
+                  <div class="rec-desc">這是通過您的個人信息，為您篩選出的，與您最匹配的信息</div>
+                  <info-list v-bind:items="recommandations"></info-list>
+               </div>`
+};
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
