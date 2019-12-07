@@ -1,4 +1,10 @@
-body { margin: 0; padding: 0; font-size: 3em; }
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+    touch-action: manipulation;
+    font-family: 'Noto Serif TC', serif;
+}
 
 #nav-bar {
     background-color: red;
@@ -7,20 +13,20 @@ body { margin: 0; padding: 0; font-size: 3em; }
     top: 0;
     height: 3em;
     z-index: 100;
-    box-shadow: 0 0 15px 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.3);
     box-sizing: border-box;
     padding-left: 1em;
 }
 
 #nav-bar span {
-    font-family: 'Squada One', cursive;
-    /*font-family: 'Fredoka One', cursive;*/
-    font-size: 2em;
-    line-height: 1.5em;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 2em;
 }
 
 #tab-bar {
-    background-color: #989898;
+    background-color: #efeeee;
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.3);
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -32,7 +38,6 @@ body { margin: 0; padding: 0; font-size: 3em; }
 }
 
 #tab-bar a {
-    /*background-color: yellow;*/
     display: inline-block;
     height: 100%;
     width: 4em;
