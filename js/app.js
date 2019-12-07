@@ -1,8 +1,39 @@
+'use strict';
+
+var data = {
+    catalog: [],
+    tags: [],
+    recommandations: []
+};
+
+data.tags = _.map(_.range(20),function(i){
+    return {
+        idx: i,
+        name: faker.random.word()
+    }
+});
+
+function random_tags(N){
+    return _.map(_.sample(data.tags,N),function(tag){
+        return tag.idx;
+    });
+}
+
+data.catalog = _.map(_.range(100),function(i){
+    return {
+        id: i,
+        title: faker.random.words(_.random(5,10)),
+        abstract: faker.random.words(_.random(20,30)),
+        tags: random_tags(_.random(2,6)),
+    }
+});
+
 // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
 // and then call `Vue.use(VueRouter)`.
 
 // 1. Define route components.
 // These can be imported from other files
+const Catalog = { template: '<div>catalog</div>' };
 const Profile = { template: '<div>profile</div>' };
 const Recommandation = { template: '<div>recommandation</div>' };
 
@@ -12,6 +43,7 @@ const Recommandation = { template: '<div>recommandation</div>' };
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
+    { path: '/catalog', component: Catalog },
     { path: '/profile', component: Profile },
     { path: '/recommandation', component: Recommandation }
 ];
