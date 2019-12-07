@@ -54,7 +54,8 @@ const Recommandation = { template: '<div>recommandation</div>' };
 const routes = [
     { path: '/catalog', component: Catalog },
     { path: '/profile', component: Profile },
-    { path: '/recommandation', component: Recommandation }
+    { path: '/recommandation', component: Recommandation },
+    { path: '*', redirect: '/catalog' },
 ];
 
 // 3. Create the router instance and pass the `routes` option
