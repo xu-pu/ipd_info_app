@@ -8,6 +8,14 @@ body { margin: 0; padding: 0; font-size: 3em; }
     height: 3em;
     z-index: 100;
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    padding-left: 1em;
+}
+
+#nav-bar span {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2em;
+    line-height: 1.5em;
 }
 
 #tab-bar {
@@ -40,7 +48,7 @@ body { margin: 0; padding: 0; font-size: 3em; }
     background-image: url(images/icon-browse.png);
 }
 
-#tab-for-you {
+#tab-recommandation {
     background-image: url(images/icon-for-you.png);
 }
 
