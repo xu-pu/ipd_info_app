@@ -1,21 +1,53 @@
 body { margin: 0; padding: 0; font-size: 3em; }
-#nav-bar { background-color: red; position: absolute; width: 100%; top: 0; height: 3em; }
+
+#nav-bar {
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 3em;
+    z-index: 100;
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.5);
+}
 
 #tab-bar {
-    background-color: blue;
+    background-color: #989898;
     position: absolute;
     width: 100%;
     bottom: 0;
     height: 3em;
     display: flex;
     justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 0.5em;
 }
 
 #tab-bar a {
-    background-color: yellow;
+    /*background-color: yellow;*/
     display: inline-block;
     height: 100%;
     width: 4em;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-#lvl1-outlet { background-color: purple; position: absolute; width: 100%; top: 3em; bottom: 3em; }
+#tab-profile {
+    background-image: url(images/icon-profile.png);
+}
+
+#tab-catalog {
+    background-image: url(images/icon-browse.png);
+}
+
+#tab-for-you {
+    background-image: url(images/icon-for-you.png);
+}
+
+#lvl1-outlet {
+    /*background-color: purple;*/
+    position: absolute;
+    width: 100%;
+    top: 3em;
+    bottom: 3em;
+}
