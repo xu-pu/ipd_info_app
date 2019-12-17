@@ -152,7 +152,7 @@ const InfoItemPage = {
           <hr/>
           <div class="item-tags">
             Tags:
-            <div v-for="tag in item.tags" class="item-tag">{{item.name}}</div>
+            <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
           </div>
           <hr/>
           <div class="item-abstract">{{item.abstract}}</div>      
