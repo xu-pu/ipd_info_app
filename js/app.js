@@ -29,19 +29,28 @@ data.recommandations = _.sample(data.catalog,10);
 
 data.profile.tags = _.sample(data.tags,10);
 
+Vue.component('info-list-item',{
+    props: ['item'],
+    template: `
+      <div>
+          <div class="item-title">{{item.title}}</div>
+          <hr/>
+          <div class="item-tags">
+            Tags:
+            <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
+          </div>
+          <hr/>
+          <div class="item-abstract">{{item.abstract}}</div>      
+      </div>
+    `
+});
+
 Vue.component('info-list',{
     props: ['items'],
     template: `
   <ol class="info-list">
     <li v-for="item in items">
-      <div class="item-title">{{item.title}}</div>
-      <hr/>
-      <div class="item-tags">
-        Tags:
-        <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
-      </div>
-      <hr/>
-      <div class="item-abstract">{{item.abstract}}</div>
+      <info-list-item v-bind:item="item"></info-list-item>
     </li>
   </ol>
     `
