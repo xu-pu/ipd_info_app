@@ -75,13 +75,24 @@ const Profile = {
 };
 
 const Recommandation = {
+
     data: function(){ return data; },
+
+    methods: {
+
+        itemEnter(item_id){
+            this.$router.push({ path: `/catalog/item/${item_id}` });
+        }
+
+    },
+
     template: `<div>
                   <div id="recommandation-container">
                       <div class="rec-desc">這是通過您的個人信息，為您篩選出的，與您最匹配的信息</div>
-                      <info-list v-bind:items="recommandations"></info-list>                  
+                      <info-list v-bind:items="recommandations" v-on:itemEnter="itemEnter"></info-list>                  
                   </div>
                </div>`
+
 };
 
 const ItemFull = {
