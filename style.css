@@ -147,7 +147,7 @@ body {
     top:0;
     bottom: 0;
     left: 0;
-    animation: 0.5s item_slide_in;
+    animation: 0.25s item_slide_in;
     z-index: 10;
     padding: 1em;
     box-sizing: border-box;
