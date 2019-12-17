@@ -80,21 +80,30 @@ body {
     width: 100%;
     top: 3em;
     bottom: 3em;
-    overflow: scroll;
     padding: 0.5em;
     box-sizing: border-box;
 }
 
-#catalog-container {
+.info-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#catalog-container li {
+.info-list li {
     background-color: antiquewhite;
     margin-bottom: 0.5em;
     padding: 1em;
+}
+
+#catalog-container, #recommandation-container {
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    overflow: scroll;
+    padding: 0.5em;
 }
 
 .item-title {
@@ -129,4 +138,32 @@ body {
     margin: 0.3em;
     display: inline-block;
     padding: 0.3em;
+}
+
+#catalog-outlet {
+
+    position: absolute;
+    width: 100%;
+
+    background-color: white;
+
+    top:0;
+    bottom:0;
+
+    left: 0;
+
+    animation-name: item_slide_in;
+    animation-duration: 0.5s;
+
+    z-index: 10;
+
+}
+
+@keyframes item_slide_in {
+    from {
+        left: 100%;
+    }
+    to{
+        left: 0;
+    }
 }

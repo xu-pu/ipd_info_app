@@ -32,7 +32,7 @@ data.profile.tags = _.sample(data.tags,10);
 Vue.component('info-list',{
     props: ['items'],
     template: `
-  <ol id="catalog-container">
+  <ol class="info-list">
     <li v-for="item in items">
       <div class="item-title">{{item.title}}</div>
       <hr/>
@@ -50,7 +50,10 @@ Vue.component('info-list',{
 const Catalog = {
     data: function(){ return data; },
     template: `<div>
-                 <info-list v-bind:items="catalog"></info-list>
+                 <div id="catalog-container">
+                     <info-list v-bind:items="catalog"></info-list>
+                 </div>
+                 <router-view id="catalog-outlet"></router-view>
                </div>`
 };
 
@@ -74,9 +77,15 @@ const Profile = {
 const Recommandation = {
     data: function(){ return data; },
     template: `<div>
-                  <div class="rec-desc">這是通過您的個人信息，為您篩選出的，與您最匹配的信息</div>
-                  <info-list v-bind:items="recommandations"></info-list>
+                  <div id="recommandation-container">
+                      <div class="rec-desc">這是通過您的個人信息，為您篩選出的，與您最匹配的信息</div>
+                      <info-list v-bind:items="recommandations"></info-list>                  
+                  </div>
                </div>`
+};
+
+const ItemFull = {
+    template: `<div></div>`
 };
 
 // 2. Define some routes
@@ -85,7 +94,9 @@ const Recommandation = {
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/catalog', component: Catalog },
+    { path: '/catalog', component: Catalog, children: [
+            { path: 'item/:id', component: ItemFull }
+    ]},
     { path: '/profile', component: Profile },
     { path: '/recommandation', component: Recommandation },
     { path: '*', redirect: '/catalog' },
