@@ -119,11 +119,20 @@ const Recommandation = {
 
     data: function(){ return data; },
 
+    methods: {
+
+        enterItem(id){
+            this.$router.push({ path: `/recommandation/item/${id}` });
+        }
+
+    },
+
     template: `<div>
                   <div id="recommandation-container">
                       <div class="rec-desc">這是通過您的個人信息，為您篩選出的，與您最匹配的信息</div>
-                      <info-list v-bind:items="recommandations" v-on:itemEnter="itemEnter"></info-list>                  
+                      <info-list v-bind:items="recommandations" v-on:enterItem="enterItem"></info-list>                  
                   </div>
+                  <router-view id="recommandation-outlet"></router-view>
                </div>`
 
 };
@@ -170,7 +179,9 @@ const routes = [
             { path: 'item/:id', component: InfoItemPage }
     ]},
     { path: '/profile', component: Profile },
-    { path: '/recommandation', component: Recommandation },
+    { path: '/recommandation', component: Recommandation, children: [
+            { path: 'item/:id', component: InfoItemPage }
+    ]},
     { path: '*', redirect: '/catalog' },
 ];
 
