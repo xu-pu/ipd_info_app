@@ -128,8 +128,36 @@ const Recommandation = {
 
 };
 
-const ItemFull = {
-    template: `<div></div>`
+const InfoItemPage = {
+
+    data: function(){
+        return {
+            item: null
+        };
+    },
+
+    beforeRouteEnter (to, from, next) {
+        next(function(comp){
+            comp.item = data.catalog[to.params.id];
+        });
+    },
+
+    beforeRouteUpdate (to, from, next) {
+        this.item = data.catalog[to.params.id];
+    },
+
+    template: `
+      <div v-if="item">
+          <div class="item-title">{{item.title}}</div>
+          <hr/>
+          <div class="item-tags">
+            Tags:
+            <div v-for="tag in item.tags" class="item-tag">{{item.name}}</div>
+          </div>
+          <hr/>
+          <div class="item-abstract">{{item.abstract}}</div>      
+      </div>`
+
 };
 
 // 2. Define some routes
@@ -139,7 +167,7 @@ const ItemFull = {
 // We'll talk about nested routes later.
 const routes = [
     { path: '/catalog', component: Catalog, children: [
-            { path: 'item/:id', component: ItemFull }
+            { path: 'item/:id', component: InfoItemPage }
     ]},
     { path: '/profile', component: Profile },
     { path: '/recommandation', component: Recommandation },
