@@ -30,10 +30,20 @@ data.recommandations = _.sample(data.catalog,10);
 data.profile.tags = _.sample(data.tags,10);
 
 Vue.component('info-list-item',{
+
     props: ['item'],
+
+    methods: {
+
+        enter(){
+            this.$emit('enter',this.item.id);
+        }
+
+    },
+
     template: `
       <div>
-          <div class="item-title">{{item.title}}</div>
+          <div class="item-title" v-on:click="enter">{{item.title}}</div>
           <hr/>
           <div class="item-tags">
             Tags:
@@ -43,24 +53,46 @@ Vue.component('info-list-item',{
           <div class="item-abstract">{{item.abstract}}</div>      
       </div>
     `
+
 });
 
 Vue.component('info-list',{
+
     props: ['items'],
+
+    methods: {
+
+        enterItem(id){
+            this.$emit('enterItem',id);
+        }
+
+    },
+
     template: `
   <ol class="info-list">
     <li v-for="item in items">
-      <info-list-item v-bind:item="item"></info-list-item>
+      <info-list-item v-bind:item="item" v-on:enter="enterItem"></info-list-item>
     </li>
   </ol>
     `
+
 });
 
 const Catalog = {
+
     data: function(){ return data; },
+
+    methods: {
+
+        enterItem(id){
+            this.$router.push({ path: `/catalog/item/${id}` });
+        }
+
+    },
+
     template: `<div>
                  <div id="catalog-container">
-                     <info-list v-bind:items="catalog"></info-list>
+                     <info-list v-bind:items="catalog" v-on:enterItem="enterItem"></info-list>
                  </div>
                  <router-view id="catalog-outlet"></router-view>
                </div>`
@@ -86,14 +118,6 @@ const Profile = {
 const Recommandation = {
 
     data: function(){ return data; },
-
-    methods: {
-
-        itemEnter(item_id){
-            this.$router.push({ path: `/catalog/item/${item_id}` });
-        }
-
-    },
 
     template: `<div>
                   <div id="recommandation-container">
