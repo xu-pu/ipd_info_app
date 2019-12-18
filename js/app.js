@@ -16,13 +16,18 @@ data.tags = _.map(_.range(20),function(i){
     }
 });
 
-data.catalog = _.map(_.range(100),function(i){
-    return {
-        id: i,
-        title: faker.lorem.sentence(),
-        abstract: faker.lorem.paragraph(),
-        tags: _.sample(data.tags,(_.random(2,6)))
-    }
+// data.catalog = _.map(_.range(100),function(i){
+//     return {
+//         id: i,
+//         title: faker.lorem.sentence(),
+//         abstract: faker.lorem.paragraph(),
+//         tags: _.sample(data.tags,(_.random(2,6)))
+//     }
+// });
+
+data.catalog = _.map(hyq_data.Sheet1,function(item,i){
+    item.id = i;
+    return item;
 });
 
 data.recommandations = _.sample(data.catalog,10);
@@ -45,10 +50,7 @@ Vue.component('info-list-item',{
       <div>
           <div class="item-title" v-on:click="enter">{{item.title}}</div>
           <hr/>
-          <div class="item-tags">
-            Tags:
-            <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
-          </div>
+          <div class="item-host">主辦方: {{item.host}}</div>
           <hr/>
           <div class="item-abstract">{{item.abstract}}</div>      
       </div>
