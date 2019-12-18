@@ -16,15 +16,6 @@ data.tags = _.map(_.range(20),function(i){
     }
 });
 
-// data.catalog = _.map(_.range(100),function(i){
-//     return {
-//         id: i,
-//         title: faker.lorem.sentence(),
-//         abstract: faker.lorem.paragraph(),
-//         tags: _.sample(data.tags,(_.random(2,6)))
-//     }
-// });
-
 data.catalog = _.map(hyq_data.Sheet1,function(item,i){
     item.id = i;
     return item;
@@ -158,15 +149,27 @@ const InfoItemPage = {
     },
 
     template: `
-      <div v-if="item">
+      <div v-if="item" class="item-page">
           <div class="item-title">{{item.title}}</div>
           <hr/>
-          <div class="item-tags">
-            Tags:
-            <div v-for="tag in item.tags" class="item-tag">{{tag.name}}</div>
-          </div>
+          <div><span>標簽:</span> {{item.labels}}</div>
+          <div><span>受眾人群:</span> {{item.target_audience}}</div>
           <hr/>
           <div class="item-abstract">{{item.abstract}}</div>      
+          <hr/>
+          <div><span>主辦方:</span> {{item.host}}</div>
+          <div><span>費用:</span> {{item.fee}}</div>
+          <div><span>活動地點:</span> {{item.location}}</div>
+          <div><span>活動時間:</span> {{item.date}}, {{item.time}}</div>
+          <div><span>聯系方式:</span> {{item.contact}}</div>
+          <hr/>
+          <div><span>報名方法:</span> {{item.enroll_method}}</div>
+          <div><span>報名截止日期:</span> {{item.enroll_deadline}}</div>
+          <div><span>報名須知:</span> {{item.enroll_notice}}</div>
+          <div><a target="_blank" v-bind:href="item.enroll_link">報名鏈接</a></div>
+          <hr/>
+          <div><a target="_blank" v-bind:href="item.link">原始鏈接</a></div>
+
       </div>`
 
 };

@@ -161,3 +161,7 @@ body {
         left: 0;
     }
 }
+
+.item-page div span {
+    color: gray;
+}
